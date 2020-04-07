@@ -16,7 +16,7 @@
     "react": "^16.13.0",
     "react-animated-css": "^1.2.1",
     "react-dom": "^16.13.0",
-    "react-icons": "file:node_modules/react-icons",
+    "react-icons": "^3.9.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
     "recharts": "^1.8.5",
