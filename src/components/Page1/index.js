@@ -1,7 +1,8 @@
 import React from "react";
+import logo from "../../logo.svg";
 
 function Page1() {
-  return <h1>Page 1</h1>;
+    return (<div><img className="h-20"src={logo}/></div>);
 }
 
 export default Page1;

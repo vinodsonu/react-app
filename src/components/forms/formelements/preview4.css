@@ -1,0 +1,18 @@
+.state-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.dropDown {
+    width: 130px;
+    height: 30px;
+    margin-top: 20px;
+}
+
+.submit-btn {
+    width: 120px;
+    height: 30px;
+    margin: 20px;
+}

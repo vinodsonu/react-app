@@ -1,0 +1,116 @@
+.root {
+    width: 400px;
+    border: 2px solid black;
+}
+
+.todo-container {
+    width: 400px;
+    border: 2px solid black;
+}
+
+.heading {
+    color: lightpink;
+    font-size: 70px;
+    display: flex;
+    justify-content: center;
+    width: 400px;
+}
+
+.todo-heading {
+    color: #4d4d4d;
+    font-size: 24px;
+}
+
+.todo-list-container {
+    display: flex;
+    width: 400px;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    background-color: white;
+}
+
+.todo-item {
+    color: #4d4d4d;
+    font-size: 24px;
+    flex-grow: 1;
+}
+
+.default-row {
+    display: flex;
+    width: 400px;
+    flex-direction: column;
+}
+
+.appended-child {
+    border: 2px #e1e1e1;
+    font-size: 24px;
+    color: #4d4d4d;
+    width: 400px;
+    display: flex;
+    justify-content: center;
+}
+
+.child-checkbox {
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
+    color: #f5f5f5;
+}
+
+.child-del-btn {
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+}
+
+.child-text {
+    display: flex;
+    flex-grow: 1;
+    color: #4d4d4d;
+    font-size: 24px;
+    border: none;
+    background-color: #f5f5f5;
+}
+
+.add-btn {
+    height: 20px;
+    width: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid white;
+}
+
+.footer {
+    color: #777777;
+    font-size: 8px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 400px;
+}
+
+.footer-btn {
+    height: 30px;
+    border: 2px #777777;
+    font-size: 14px;
+    color: #777777;
+}
+
+.footer-btn:hover {
+    border: 2px solid rgba(175, 47, 47, 0.2);
+}
+
+.todoApp {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

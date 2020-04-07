@@ -1,0 +1,17 @@
+.countries-container-1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.countries-1 {
+    margin: 20px;
+}
+
+.submit-btn-1 {
+    width: 120px;
+    height: 30px;
+    border: 2px solid black;
+    margin: 20px;
+}

@@ -1,0 +1,16 @@
+.favorite-dish {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.items-list {
+    margin: 20px;
+}
+
+.submit-btn-1 {
+    width: 120px;
+    height: 30px;
+    margin: 20px;
+}

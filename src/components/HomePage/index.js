@@ -19,6 +19,8 @@ function App() {
           Learn React
         </a>
         <Link to="/page-1">Page 1</Link>
+        <Link to="/country-dashboard-app">covid19-v2</Link>
+        <Link to="/emojigame">emojigame</Link>
       </header>
     </div>
   );

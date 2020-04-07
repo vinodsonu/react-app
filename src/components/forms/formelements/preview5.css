@@ -1,0 +1,22 @@
+.form5 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.submit-btn {
+    width: 100px;
+    height: 30px;
+    margin: 20px;
+    border: 2px solid black;
+}
+
+.label {
+    display: flex;
+    font-size: 20px
+}
+
+.message-div {
+    display: flex;
+    justify-content: center;
+}

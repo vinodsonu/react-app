@@ -12,9 +12,12 @@
     "babel-plugin-macros": "^2.8.0",
     "postcss-cli": "^7.1.0",
     "react": "^16.13.0",
+    "react-animated-css": "^1.2.1",
     "react-dom": "^16.13.0",
+    "react-icons": "file:node_modules/react-icons",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
+    "recharts": "^1.8.5",
     "tailwind.macro": "^1.0.0-alpha.10"
   },
   "scripts": {
