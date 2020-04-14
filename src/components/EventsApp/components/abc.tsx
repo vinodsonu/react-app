@@ -1,8 +1,14 @@
 import React from 'react'
 import { observer, Provider, inject } from 'mobx-react'
 import { observable, action } from 'mobx';
+
+export type  EventAppProps={
+    value?:string,
+    temp?:string,
+    name?:string,
+}
 @observer
-class A extends React.Component {
+class A extends React.Component<EventAppProps>{
     @observable value = 'x';
     render() {
         return (<Provider temp={this.value}>
@@ -13,13 +19,12 @@ class A extends React.Component {
 @inject('temp')
 @observer
 class B extends React.Component {
-    @observable name = "";
+    @observable name:string = "";
     @action.bound
     onChange(event) {
         this.name = event.target.value;
     }
     render() {
-        const { temp } = this.props;
         return (
             <div>
             <input style={{backgroundColor:"yellow"}} value={this.name} onChange={this.onChange}/>
@@ -29,9 +34,8 @@ class B extends React.Component {
     }
 }
 @inject('temp')
-class C extends React.Component {
+class C extends React.Component<EventAppProps> {
     render() {
-        console.log(this.name)
         const { name } = this.props;
         return (<div>{name}</div>)
     }

@@ -3,9 +3,11 @@ import React from 'react';
 import { observable, action, computed, reaction } from 'mobx';
 import { observer } from 'mobx-react';
 
-import './../index.css';
-import todoStore from './../../../stores/TodoStore/index.js'
-import Todo from './Todo.js'
+import TodoModel from './../../../stores/models/TodoModel/index'
+import todoStore from './../../../stores/TodoStore/index'
+import './../index';
+import Todo from './Todo'
+
 @observer
 class TodoList extends React.Component {
     @observable todos = [];

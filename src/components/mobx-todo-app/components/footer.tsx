@@ -2,14 +2,11 @@ import React from 'react';
 import { observable, action } from 'mobx';
 import { observer } from 'mobx-react';
 
-import './../index.css'
+import todoStore from './../../../stores/TodoStore/index'
+import './../index'
 
-import todoStore from './../../../stores/TodoStore/index.js'
 @observer
 class Footer extends React.Component {
-    constructor() {
-        super();
-    }
     @action.bound
     onChangeSelectedFilter(filterType) {
         todoStore.onChangeSelectedFilter(filterType);

@@ -3,8 +3,9 @@ import styled from '@emotion/styled'
 import { jsx } from '@emotion/core'
 import { observer } from 'mobx-react';
 
-import { CounterContainer, Button, Input, Heading, CounterDiv } from './componentstyles.js'
-import CounterStore from './../../stores/countStore/index.js'
+import { CounterContainer, Button, Input, Heading, CounterDiv } from './componentstyles'
+import CounterStore from './../../stores/countStore/index'
+
 @observer
 class CounterApp extends React.Component {
     constructor() {

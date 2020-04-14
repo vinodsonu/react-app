@@ -1,20 +1,21 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { observable } from 'mobx';
+import { observer } from 'mobx-react';
 
 import HomePage from "./components/HomePage";
 import Page1 from "./components/Page1";
-import CountriesDashboardApp from './components/covid19-v2/index.js'
-import CounterApp from './components/counter-app/index.js'
-import EmojiGame from './components/emojigame/index.js'
-import WinOrLoss from './components/emojigame/components/WinOrLoss.js'
-import CountryDetails from './components/covid19-v2/CountryDetails/index.js'
-import CounterPage from './components/CounterPage/index.js'
-import TodoApp from './components/mobx-todo-app/index.js'
-import EventApp from './components/EventsApp/components/EventsApp.js'
-import "./App.css";
-import { observable } from 'mobx';
-import { observer } from 'mobx-react';
-import themeStore from './stores/ThemeStore/index.js'
+import CountriesDashboardApp from './components/covid19-v2/index'
+import CounterApp from './components/CounterApp/index'
+import EmojiGame from './components/emojigame/index'
+import WinOrLoss from './components/emojigame/components/WinOrLoss'
+import CountryDetails from './components/covid19-v2/CountryDetails/index'
+import CounterPage from './components/CounterPage/index'
+import TodoApp from './components/mobx-todo-app/index'
+import EventApp from './components/EventsApp/components/EventsApp'
+import themeStore from './stores/ThemeStore/index'
+import "./App";
+
 @observer
 class App extends React.Component {
   getCurrentTheme = () => {

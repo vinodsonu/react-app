@@ -2,19 +2,24 @@ import React from 'react'
 import { observer } from 'mobx-react'
 import { observable, action } from 'mobx';
 
-import { AddEventDiv, Button } from './../componentStyles.js'
+import eventStore from './../../../stores/EventsStore/EventStore'
+import EventModel from './../../../stores/models/EventModel'
+import EventsList from './EventsList'
+import { AddEventDiv, Button } from './../componentStyles'
 
-import eventStore from './../../../stores/EventsStore/EventStore.js'
-import EventModel from './../../../stores/models/EventModel.js'
-import EventsList from './EventsList.js'
+type AddEventProps={
+    onAddEvent:(id:number,name:string,location:string)=>void
+}
+
 @observer
-class AddEvent extends React.Component {
-    @observable name;
-    @observable location;
+class AddEvent extends React.Component<AddEventProps> {
+    @observable id=Math.random()
+    @observable name
+    @observable location
     @action.bound
     onAddEvent = (event) => {
         event.preventDefault();
-        eventStore.onAddEvent(this.name, this.location);
+        eventStore.onAddEvent(this.id,this.name,this.location);
         this.name = "";
         this.location = "";
     }
