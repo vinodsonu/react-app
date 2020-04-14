@@ -14,7 +14,7 @@ import CounterPage from './components/CounterPage/index'
 import TodoApp from './components/mobx-todo-app/index'
 import EventApp from './components/EventsApp/components/EventsApp'
 import themeStore from './stores/ThemeStore/index'
-import "./App";
+import "./App.css";
 
 @observer
 class App extends React.Component {

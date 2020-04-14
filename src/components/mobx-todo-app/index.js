@@ -9,7 +9,7 @@ import AddTodo from './components/AddTodo';
 import Footer from './components/footer';
 
 @observer
-class TodoApp extends React.Component<AddTodoProps> {
+class TodoApp extends React.Component{
     render() {
         return (<div className="todo-container">
         <AddTodo/>

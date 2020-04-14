@@ -7,19 +7,16 @@ import EventModel from './../../../stores/models/EventModel'
 import EventsList from './EventsList'
 import { AddEventDiv, Button } from './../componentStyles'
 
-type AddEventProps={
-    onAddEvent:(id:number,name:string,location:string)=>void
-}
 
 @observer
-class AddEvent extends React.Component<AddEventProps> {
-    @observable id=Math.random()
+class AddEvent extends React.Component {
+    @observable id = Math.random()
     @observable name
     @observable location
     @action.bound
     onAddEvent = (event) => {
         event.preventDefault();
-        eventStore.onAddEvent(this.id,this.name,this.location);
+        eventStore.onAddEvent(this.id, this.name, this.location);
         this.name = "";
         this.location = "";
     }

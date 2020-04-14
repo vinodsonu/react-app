@@ -7,11 +7,8 @@ import TodoModel from './../../../stores/models/TodoModel/index'
 import todoStore from './../../../stores/TodoStore/index'
 import './../index'
 
-type todoProps ={
-    todoModel:TodoModel,
-}
 @observer
-class Todo extends React.Component <todoProps>{
+class Todo extends React.Component{
     
     @action.bound
     onCompleteTodo = (event) => {

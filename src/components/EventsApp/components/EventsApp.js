@@ -8,8 +8,8 @@ import A from './abc'
 
 @observer
 class EventApp extends React.Component {
-    render(){
-        return(<A/>)
+    render() {
+        return (<A/>)
     }
 }
 export default EventApp;

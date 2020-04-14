@@ -7,13 +7,9 @@ import todoStore from './../../../stores/TodoStore/index'
 
 import './../index'
 import TodoList from './TodoList'
-type AddTodoProps={
-    onAddTodo:(userInput:string)=>void
-    userInput:string;
-}
 @observer
-class AddTodo extends React.Component<AddTodoProps> {
-    @observable userInput:string = '';
+class AddTodo extends React.Component {
+    @observable userInput: string = '';
     onKeyDown = (event) => {
         if (event.keyCode === 13) {
             this.onAddTodo(event.target.value);
@@ -22,9 +18,10 @@ class AddTodo extends React.Component<AddTodoProps> {
     }
     @action.bound
     onAddTodo(userInput) {
-        todoStore.onAddTodo(userInput)}
-   render(){
-       return (<div className="todoApp">
+        todoStore.onAddTodo(userInput)
+    }
+    render() {
+        return (<div className="todoApp">
         <div  onSubmit={this.onAddTodo}>
         <div className="heading">todo</div>
         <div className="default-row" >
@@ -33,6 +30,6 @@ class AddTodo extends React.Component<AddTodoProps> {
         </div>
         </div>
       </div>)
-   }
+    }
 }
 export default AddTodo;
