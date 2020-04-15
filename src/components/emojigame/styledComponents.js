@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import tw from 'tailwind.macro';
-const NavBarDiv = styled.div `${
+const NavBarDiv =styled.div `${
                 tw`block  flex justify-between items-center p-4`}${props=>({backgroundColor:(props.selectedTheme.id==="1"?"#666699":"")})}`
 const MainDiv = styled.div `${``}${props=>({backgroundColor:props.selectedTheme.name,color:props.selectedTheme.fontColor})}`
 const NavBarHeadingDiv = styled.div `${tw` text-3xl flex ml-4 items-center`}`

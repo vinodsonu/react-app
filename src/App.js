@@ -14,6 +14,7 @@ import CounterPage from './components/CounterPage/index'
 import TodoApp from './components/mobx-todo-app/index'
 import EventApp from './components/EventsApp/components/EventsApp'
 import themeStore from './stores/ThemeStore/index'
+import GridMemoryGame from './components/GridMemoryGame/Components/GridMemoryGame'
 import "./App.css";
 
 @observer
@@ -30,6 +31,9 @@ class App extends React.Component {
       <Switch>
       <Route exact path="/Event-App">
           <EventApp />
+        </Route>
+      <Route exact path="/grid-game">
+          <GridMemoryGame />
         </Route>
         <Route exact path="/counter-page">
           <CounterPage />
