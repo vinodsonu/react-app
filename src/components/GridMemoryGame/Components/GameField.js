@@ -1,20 +1,22 @@
 import React from 'react'
-import { observable } from 'mobx';
-import { observer } from 'mobx-react';
+import { observable, action } from 'mobx';
+import { observer, inject } from 'mobx-react';
 
 import { GameDiv } from '../StyledComponents/StyledComponents.js'
 import Cell from './Cell.js'
-
+@inject("gridStore", "gameDivWidth")
 @observer
 class GameField extends React.Component {
-    @observable cells = [];
-    @observable level = 0;
     render() {
-        return (<GameDiv>
-        {this.props.cells.map((eachCell) => {
-            return (<Cell key={eachCell.id} cell={eachCell}/>)
+        this.props.gridStore.setGridCells();
+        this.props.gridStore.setTimeInterval();
+        return (
+            <GameDiv width={this.props.gameDivWidth}>
+        {this.props.gridStore.currentLevelGrids.map((eachGrid) => {
+            return (<Cell  level={this.props.gridStore.level} key={eachGrid.id} cell={eachGrid}/>)
         })}
-        </GameDiv>)
+        </GameDiv>
+        )
     }
 }
 export default GameField;

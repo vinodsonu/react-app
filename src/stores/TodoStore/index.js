@@ -1,20 +1,20 @@
 import { observable, action, computed, reaction } from 'mobx';
 
-import TodoModel,{TodoObjectType} from './../models/TodoModel/index.js'
+import TodoModel, { TodoObjectType } from './../models/TodoModel/index.js'
 import { observer } from 'mobx-react';
 
 class TodoStore {
-    @observable todos:Array<TodoModel> = [];
+    @observable todos = [];
     @observable selectedFilter = 'ALL';
 
     @action.bound
-    onAddTodo(userInput:string) {
-        const todo:TodoObjectType={
+    onAddTodo(userInput) {
+        const todo: TodoObjectType = {
             userInput,
-            id:Math.random(),
-            isChecked:false,
+            id: Math.random(),
+            isChecked: false,
         }
-        const todoModel=new TodoModel(todo);
+        const todoModel = new TodoModel(todo);
         this.todos.push(todoModel)
     }
     @action.bound
@@ -48,7 +48,7 @@ class TodoStore {
         return tasksToComplete;
     }
     @computed get filteredTodos() {
-        let todosToDisplay:Array<TodoModel> = [];
+        let todosToDisplay: Array < TodoModel > = [];
         switch (this.selectedFilter) {
             case "ALL":
                 todosToDisplay = [...this.todos];

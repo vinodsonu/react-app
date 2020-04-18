@@ -25,6 +25,15 @@ class App extends React.Component {
   onChangeTheme = () => {
     themeStore.setCurrentTheme(themeStore.selectedTheme.id);
   }
+  componentDidMount() {
+    let currentTheme = localStorage.getItem('selectedTheme')
+    if (currentTheme) {
+      themeStore.selectedTheme = JSON.parse(localStorage.getItem('selectedTheme'))
+    }
+  }
+  componentDidUpdate() {
+    localStorage.setItem('selectedTheme', JSON.stringify(themeStore.selectedTheme))
+  }
   render() {
     return (
       <Router basename={process.env.PUBLIC_URL}>
@@ -33,7 +42,7 @@ class App extends React.Component {
           <EventApp />
         </Route>
       <Route exact path="/grid-game">
-          <GridMemoryGame />
+          <GridMemoryGame selectedTheme = { this.getCurrentTheme() } onChangeTheme = { this.onChangeTheme }/>
         </Route>
         <Route exact path="/counter-page">
           <CounterPage />

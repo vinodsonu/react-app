@@ -9,12 +9,14 @@ class ThemeStore {
         light: {
             id: "0",
             name: "#fff",
-            fontColor: "#2b3945"
+            fontColor: "#2b3945",
+            modeName: "Mode:Light",
         },
         dark: {
             id: "1",
             name: "#2b3945",
             fontColor: "#fff",
+            modeName: "Mode:Dark"
         }
     }
     @action
