@@ -7,9 +7,10 @@ import todoStore from './../../../stores/TodoStore/index'
 
 import './../index'
 import TodoList from './TodoList'
+
 @observer
 class AddTodo extends React.Component {
-    @observable userInput: string = '';
+    @observable userInput = '';
     onKeyDown = (event) => {
         if (event.keyCode === 13) {
             this.onAddTodo(event.target.value);
@@ -18,7 +19,9 @@ class AddTodo extends React.Component {
     }
     @action.bound
     onAddTodo(userInput) {
-        todoStore.onAddTodo(userInput)
+        let id = Math.random();
+        let isCompleted = false;
+        todoStore.onAddTodo(userInput, id, isCompleted)
     }
     render() {
         return (<div className="todoApp">

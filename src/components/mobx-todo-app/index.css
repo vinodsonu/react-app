@@ -1,5 +1,6 @@
 .todo-container {
-    width: 400px;
+    display: flex;
+    flex-direction: column;
 }
 
 .heading {
@@ -83,8 +84,9 @@
 
 .footer {
     color: #777777;
-    font-size: 8px;
+    font-size: 12px;
     display: flex;
+    align-self: center;
     justify-content: space-around;
     align-items: center;
     width: 400px;
@@ -121,4 +123,19 @@
     text-decoration: "";
     disabled: false;
     color: black;
+}
+
+.network-msg-display-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.network-msg {
+    font-size: 20px;
+}
+
+.network-msg-btn {
+    font-size: 15px;
 }

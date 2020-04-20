@@ -16,8 +16,9 @@ class Footer extends React.Component {
         todoStore.onClearCompleted();
     }
     render() {
-        return (<div className="footer" id="footer">
-      <p><span className="items-left" id="itemsLeft">{todoStore.activeTodosCount} itemsLeft</span></p>
+        let { activeTodosCount } = todoStore;
+        return (<div key={Math.random()} className="footer" >
+      <p><span className="items-left" id="itemsLeft">{activeTodosCount} itemsLeft</span></p>
       <button  onClick={()=>this.onChangeSelectedFilter("ALL")}className="show-all footer-btn">All</button>
       <button onClick={()=>this.onChangeSelectedFilter("ACTIVE")} className="active footer-btn">Active</button>
       <button onClick={()=>this.onChangeSelectedFilter("COMPLETED")}className="completed-tasks footer-btn">Completed</button>

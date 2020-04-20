@@ -2,18 +2,13 @@ import React from 'react'
 import { observable, action } from 'mobx'
 import { observer } from 'mobx-react'
 
-export type TodoObjectType={
-    id:number,
-    userInput:string,
-    isChecked:boolean,
-}
 class TodoModel {
-    id:number = 0;
-    @observable userInput:string = '';
-    @observable isChecked:boolean = false;
-    constructor(todo:TodoObjectType) {
+    id = 0;
+    @observable userInput = '';
+    @observable isChecked = false;
+    constructor(todo) {
         this.id = todo.id,
-        this.userInput = todo.userInput;
+            this.userInput = todo.userInput;
         this.isChecked = todo.isChecked;
     }
     @action.bound

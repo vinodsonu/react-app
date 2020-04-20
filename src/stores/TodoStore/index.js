@@ -1,21 +1,16 @@
-import { observable, action, computed, reaction } from 'mobx';
+import { observable, action, computed } from 'mobx';
+import { observer, reaction } from 'mobx-react';
 
-import TodoModel, { TodoObjectType } from './../models/TodoModel/index.js'
-import { observer } from 'mobx-react';
-
+import TodoModel from './../models/TodoModel/index.js'
 class TodoStore {
     @observable todos = [];
     @observable selectedFilter = 'ALL';
-
+    @observable isFetchedDataEmpty = false;
     @action.bound
-    onAddTodo(userInput) {
-        const todo: TodoObjectType = {
-            userInput,
-            id: Math.random(),
-            isChecked: false,
-        }
-        const todoModel = new TodoModel(todo);
-        this.todos.push(todoModel)
+    onAddTodo(userInput, id, isCompleted) {
+        if (this.fetchedDataEmpty === false)
+            this.fetchedDataEmpty = true;
+        this.todos.push(new TodoModel({ userInput: userInput, isChecked: isCompleted, id: id }))
     }
     @action.bound
     onRemoveTodo(id) {
@@ -30,6 +25,7 @@ class TodoStore {
     @action.bound
     onChangeSelectedFilter(selectedFilter) {
         this.selectedFilter = selectedFilter
+        alert(selectedFilter);
     }
     @action.bound
     onClearCompleted() {
@@ -48,20 +44,20 @@ class TodoStore {
         return tasksToComplete;
     }
     @computed get filteredTodos() {
-        let todosToDisplay: Array < TodoModel > = [];
+        let todosToDisplay = [];
         switch (this.selectedFilter) {
             case "ALL":
                 todosToDisplay = [...this.todos];
                 break;
             case "ACTIVE":
                 todosToDisplay = this.todos.filter((todo) => {
-                    if (todo.isChecked !== true)
+                    if (todo.isChecked != true)
                         return true;
                 })
                 break;
             case "COMPLETED":
                 todosToDisplay = this.todos.filter((todo) => {
-                    if (todo.isChecked === true)
+                    if (todo.isChecked == true)
                         return true;
                 })
                 break;
@@ -69,8 +65,6 @@ class TodoStore {
         return todosToDisplay
 
     }
-    onTodoAdd = reaction(() => (this.todos.length), (length) => { console.log("no of todos", length) })
-    onChangeTodoText = reaction(() => this.todos.map((todo) => todo.userInput), (value) => { console.log(value) })
 }
 const todoStore = new TodoStore();
 export default todoStore;
