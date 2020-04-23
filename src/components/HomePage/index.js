@@ -25,6 +25,7 @@ function App() {
         <Link to="/country-dashboard-app">covid19-v2</Link>
         <Link to="/emojigame">emojigame</Link>
         <Link to="/counter-app">counterApp</Link>
+        <Link to="/UsersPage">UsersPage</Link>
         
       </header>
     </div>

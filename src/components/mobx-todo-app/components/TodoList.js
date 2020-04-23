@@ -2,9 +2,9 @@
 import React from 'react';
 import { observable, action, computed, reaction } from 'mobx';
 import { observer } from 'mobx-react';
+var ScrollArea = require('react-scrollbar');
 
 import TodoModel from './../../../stores/models/TodoModel/index'
-import todoStore from './../../../stores/TodoStore/index'
 import './../index';
 import Todo from './Todo'
 
@@ -12,9 +12,11 @@ import Todo from './Todo'
 class TodoList extends React.Component {
     @observable todos = [];
     render() {
-        return (todoStore.filteredTodos.map((todoModel) => {
-            return (<Todo key={todoModel.id} todoModel={todoModel}/>)
-        }))
+        return (
+            this.props.todoStore.filteredTodos.map((todoModel) => {
+                return (<Todo todoStore={this.props.todoStore} key={todoModel.id} todoModel={todoModel}/>)
+            })
+        )
     }
 }
 export default TodoList;

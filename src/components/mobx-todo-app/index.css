@@ -1,6 +1,7 @@
 .todo-container {
     display: flex;
     flex-direction: column;
+    height: 100vh;
 }
 
 .heading {
@@ -8,7 +9,7 @@
     font-size: 70px;
     display: flex;
     justify-content: center;
-    width: 400px;
+    width: 500px;
 }
 
 .todo-heading {
@@ -18,7 +19,7 @@
 
 .todo-list-container {
     display: flex;
-    width: 400px;
+    width: 500px;
     border: 2px solid black;
     display: flex;
     flex-direction: column;
@@ -34,24 +35,32 @@
 
 .default-row {
     display: flex;
-    width: 400px;
+    width: 500px;
     flex-direction: column;
+    border: 2px solid black;
+    margin-bottom: 5px;
+}
+
+.appended-rows {
+    overflow-y: auto;
+    background-color: white;
+    max-height: 50vh;
 }
 
 .appended-child {
     border: 2px #e1e1e1;
-    font-size: 24px;
     color: #4d4d4d;
-    width: 400px;
+    width: 500px;
     display: flex;
     justify-content: center;
 }
 
 .child-checkbox {
-    height: 40px;
-    width: 40px;
+    height: 30px;
+    width: 30px;
     border-radius: 20px;
     color: #f5f5f5;
+    margin: 10px;
 }
 
 .child-del-btn {
@@ -62,15 +71,20 @@
     justify-content: center;
     align-items: center;
     border: none;
+    color: red;
 }
 
 .child-text {
     display: flex;
     flex-grow: 1;
     color: #4d4d4d;
-    font-size: 24px;
+    font-size: 20px;
     border: none;
-    background-color: #f5f5f5;
+}
+
+.child-text:hover {
+    color: #ed1212;
+    cursor: pointer;
 }
 
 .add-btn {
@@ -89,7 +103,7 @@
     align-self: center;
     justify-content: space-around;
     align-items: center;
-    width: 400px;
+    width: 500px;
     border: 2px solid black;
 }
 

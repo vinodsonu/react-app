@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { observable } from 'mobx';
-import { observer } from 'mobx-react';
+import { observer, Provider } from 'mobx-react';
 
 import HomePage from "./components/HomePage";
 import Page1 from "./components/Page1";
@@ -14,8 +14,23 @@ import CounterPage from './components/CounterPage/index'
 import TodoApp from './components/mobx-todo-app/index'
 import EventApp from './components/EventsApp/components/EventsApp'
 import themeStore from './stores/ThemeStore/index'
+import UsersPage from './components/UsersPage/index.js'
 import GridMemoryGame from './components/GridMemoryGame/Components/GridMemoryGame'
+import stores from './stores'
 import "./App.css";
+
+/*var color = function getRandomColor() {
+  var letters = '0123456789ABCDEF'.split('');
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
+setInterval(function() {
+  document.getElementById("root").style.backgroundColor = color();
+}, 200);*/
 
 @observer
 class App extends React.Component {
@@ -36,6 +51,7 @@ class App extends React.Component {
   }
   render() {
     return (
+      <Provider  {...stores}>
       <Router basename={process.env.PUBLIC_URL}>
       <Switch>
       <Route exact path="/Event-App">
@@ -53,6 +69,7 @@ class App extends React.Component {
         <Route exact path="/counter-app">
         <CounterApp/>
         </Route>
+        <Route exact path="/UsersPage" component={UsersPage}></Route>
         <Route exact path="/page-1">
           <Page1 />
         </Route>
@@ -68,9 +85,9 @@ class App extends React.Component {
         <Route path="/">
           <HomePage />
         </Route>
-        
       </Switch>
     </Router>
+    </Provider>
     );
   }
 };

@@ -1,16 +1,50 @@
 import { observable, action, computed } from 'mobx';
 import { observer, reaction } from 'mobx-react';
+import { bindPromiseWithOnSuccess } from '@ib/mobx-promise'
+import {
+    API_INITIAL,
+    API_FETCHING,
+    API_SUCCESS,
+    API_FAILED,
+}
+from '@ib/api-constants';
 
 import TodoModel from './../models/TodoModel/index.js'
 class TodoStore {
-    @observable todos = [];
-    @observable selectedFilter = 'ALL';
-    @observable isFetchedDataEmpty = false;
+    @observable todos
+    @observable selectedFilter
+    @observable getTodosAPIStatus
+    @observable getTodosAPIError
+    todoService;
+    constructor(todoService) {
+        this.todoService = todoService;
+        this.init();
+    }
     @action.bound
-    onAddTodo(userInput, id, isCompleted) {
-        if (this.fetchedDataEmpty === false)
-            this.fetchedDataEmpty = true;
-        this.todos.push(new TodoModel({ userInput: userInput, isChecked: isCompleted, id: id }))
+    init() {
+        this.todos = []
+        this.selectedFilter = 'ALL'
+        this.getTodosAPIStatus = API_INITIAL;
+        this.getTodosAPIError = null;
+    }
+    @action.bound
+    getTodos() {
+        const todoPromise = this.todoService.getUsersAPI();
+        return bindPromiseWithOnSuccess(todoPromise)
+            .to(this.setTodosAPIStatus, this.setTodosAPIResponse)
+            .catch(this.setTodosAPIError);
+    }
+    @action.bound
+    setTodosAPIResponse(todoResponse) {
+        this.todos = todoResponse.map((todo) => new TodoModel({ userInput: todo.title, isChecked: todo.completed, id: todo.id }))
+    }
+    @action.bound
+    setTodosAPIError(error) {
+        this.getTodosAPIError = error
+    }
+    @action.bound
+    setTodosAPIStatus(apiStatus) {
+        this.getTodosAPIStatus = apiStatus;
     }
     @action.bound
     onRemoveTodo(id) {
@@ -25,7 +59,6 @@ class TodoStore {
     @action.bound
     onChangeSelectedFilter(selectedFilter) {
         this.selectedFilter = selectedFilter
-        alert(selectedFilter);
     }
     @action.bound
     onClearCompleted() {
@@ -58,13 +91,15 @@ class TodoStore {
             case "COMPLETED":
                 todosToDisplay = this.todos.filter((todo) => {
                     if (todo.isChecked == true)
-                        return true;
+                        return true
                 })
                 break;
         }
         return todosToDisplay
-
+    }
+    @action.bound
+    clearStore() {
+        this.init()
     }
 }
-const todoStore = new TodoStore();
-export default todoStore;
+export default TodoStore

@@ -1,5 +1,5 @@
 import React from 'react'
-import { observable, action } from 'mobx'
+import { observable, action, computed } from 'mobx'
 import { observer } from 'mobx-react'
 
 class TodoModel {
@@ -16,18 +16,8 @@ class TodoModel {
         this.userInput = value;
     }
     @action.bound
-    onCompleteTodo(event) {
-        if (event.target.nextElementSibling.classList.contains('disable')) {
-            event.target.nextElementSibling.classList.add('enable')
-            event.target.nextElementSibling.classList.remove('disable')
-            this.isChecked = false;
-
-        }
-        else {
-            event.target.nextElementSibling.classList.add('disable')
-            event.target.nextElementSibling.classList.remove('enable')
-            this.isChecked = true;
-        }
+    onCompleteTodo() {
+        this.isChecked = !this.isChecked
     }
 }
 export default TodoModel;

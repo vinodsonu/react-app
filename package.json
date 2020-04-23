@@ -25,9 +25,11 @@
     "react-animated-css": "^1.2.1",
     "react-dom": "^16.13.0",
     "react-icons": "^3.9.0",
+    "react-perfect-scrollbar": "1.5.8",
     "react-promise-tracker": "^2.1.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
+    "react-scrollbar": "0.5.6",
     "recharts": "^1.8.5",
     "tailwind.macro": "^1.0.0-alpha.10",
     "typescript": "3.8.3"
