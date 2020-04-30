@@ -33,8 +33,8 @@ class TodoApp extends React.Component {
         let { todos } = this.getStore()
         return (
             <div>
-            <AddTodo todoStore={this.getStore()}/></div>)
-
+                    <AddTodo todoStore={this.getStore()}/></div>)
+    
     }
     const
         render() {

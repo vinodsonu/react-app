@@ -18,7 +18,7 @@ class UsersPage extends React.Component {
     renderUsersList = () => {
         const { users } = this.getStore()
         if (users.length === 0) return (<NoDataView/>)
-
+    
         return users.map((userName) => (<div>{userName}</div>))
     }
     render() {
@@ -27,11 +27,11 @@ class UsersPage extends React.Component {
             getUsersAPIError,
         } = this.getStore()
         return (<LoadingWrapperWithFailure
-        apiStatus={getUsersAPIStatus}
-        apiError={getUsersAPIError}
-        onRetryClick={this.doNetworkCalls}
-        renderSuccessUI ={this.renderUsersList}
-        />)
+                apiStatus={getUsersAPIStatus}
+                apiError={getUsersAPIError}
+                onRetryClick={this.doNetworkCalls}
+                renderSuccessUI ={this.renderUsersList}
+                />)
     }
 }
 export default UsersPage;

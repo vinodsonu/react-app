@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import { observable } from 'mobx';
 import { observer, Provider } from 'mobx-react';
 
@@ -15,7 +15,15 @@ import TodoApp from './components/mobx-todo-app/index'
 import EventApp from './components/EventsApp/components/EventsApp'
 import themeStore from './stores/ThemeStore/index'
 import UsersPage from './components/UsersPage/index.js'
+import LoginApp from './components/LoginApp/index.js'
+import SignInForm from './Authentication/components/SignInForm'
+import ProductPage from './ECommerceSites/components/ProductPage'
 import GridMemoryGame from './components/GridMemoryGame/Components/GridMemoryGame'
+import authenticationStores from './Authentication/stores'
+import ECommerceAppStores from './ECommerceSites/stores'
+import AuthenticationRoutes from './Authentication/routes'
+import ProtectedRoute from './components/ProtectedRoute'
+// import ECommerceAppRoutes from './ECommerceSites/routes'
 import stores from './stores'
 import "./App.css";
 
@@ -51,9 +59,17 @@ class App extends React.Component {
   }
   render() {
     return (
-      <Provider  {...stores}>
+      <Provider  {...stores} {...authenticationStores} {...ECommerceAppStores}>
       <Router basename={process.env.PUBLIC_URL}>
       <Switch>
+      <Route exact path="/Sign-In">
+          <SignInForm />
+        </Route>
+      <ProtectedRoute exact path="/ECommerce-App" component={ProductPage}>
+        </ProtectedRoute>
+      <Route exact path="/Login-App">
+          <LoginApp />
+        </Route>
       <Route exact path="/Event-App">
           <EventApp />
         </Route>
