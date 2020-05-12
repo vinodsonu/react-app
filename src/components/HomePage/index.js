@@ -8,18 +8,6 @@ import { getAccessToken } from '../../utils/StorageUtils'
 @observer
 class HomePage extends React.Component {
   render() {
-    if (getAccessToken() === undefined)
-      return (
-        <Redirect
-        to={{pathname:'/Sign-In'}}
-      />
-      )
-    else
-      return (
-        <Redirect
-        to={{pathname:'/ECommerce-App'}}
-      />
-      )
 
     return (
       <div className="App">

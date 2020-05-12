@@ -1,38 +1,27 @@
 import React from 'react'
-import { observer, Provider, inject } from 'mobx-react'
-import { observable, action } from 'mobx';
-
-@observer
-class A extends React.Component {
-    @observable value = 'x';
-    render() {
-        return (<Provider temp={this.value}>
-        <B/>
-        </Provider>)
+class NameForm extends React.Component {
+    constructor() {
+        super()
+        this.state = { value: '' }
     }
-}
-@inject('temp')
-@observer
-class B extends React.Component {
-    @observable name = "";
-    @action.bound
-    onChange(event) {
-        this.name = event.target.value;
+    handleChange = (event) => {
+        this.setState({ value: event.target.value })
+        console.log(this.state.value)
+    }
+    handleSubmit = (event) => {
+        event.preventDefault();
+        console.log(event)
+        console.log(event.target.value)
     }
     render() {
         return (
-            <div>
-            <input style={{backgroundColor:"yellow"}} value={this.name} onChange={this.onChange}/>
-            <C name={this.name}/>
-            </div>
-        )
+            <form  onSubmit={this.handleSubmit}>
+        <label>
+          Name:
+          <input type="text" value={this.state.value} onChange={this.handleChange} />
+        </label>
+      </form>
+        );
     }
 }
-@inject('temp')
-class C extends React.Component {
-    render() {
-        const { name } = this.props;
-        return (<div>{name}</div>)
-    }
-}
-export default A;
+export default NameForm

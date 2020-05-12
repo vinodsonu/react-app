@@ -1,2 +1,1 @@
-import SignInForm from './SignInForm'
-export default SignInForm
+export { SignInForm as default } from './SignInForm'

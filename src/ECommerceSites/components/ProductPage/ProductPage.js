@@ -34,7 +34,11 @@ class ProductPage extends React.Component {
         return (
             <MainDiv>
         <SignOutButton onClick={this.onClickSignOut}>SignOut</SignOutButton>
-        <Header productStore={this.props.productStore}/>
+        <Header 
+            productsFound={this.props.productStore.sortedAndFilteredProducts.length}
+             onChangeSelectedText={this.props.productStore.onChangeSelectedText}
+            onChangeSortBy={this.props.productStore.onChangeSortBy}
+        />
         <ProductCart cartStore={this.props.cartStore}/>
         <ProductContainer>
         <SizeFilter productStore={this.props.productStore}/>

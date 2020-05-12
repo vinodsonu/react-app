@@ -15,8 +15,8 @@ import TodoApp from './components/mobx-todo-app/index'
 import EventApp from './components/EventsApp/components/EventsApp'
 import themeStore from './stores/ThemeStore/index'
 import UsersPage from './components/UsersPage/index.js'
-import LoginApp from './components/LoginApp/index.js'
-import SignInForm from './Authentication/components/SignInForm'
+import Ticker from './components/LoginApp/index.js'
+import SignInRoute from './Authentication/routes/SignInRoute'
 import ProductPage from './ECommerceSites/components/ProductPage'
 import GridMemoryGame from './components/GridMemoryGame/Components/GridMemoryGame'
 import authenticationStores from './Authentication/stores'
@@ -27,18 +27,18 @@ import ProtectedRoute from './components/ProtectedRoute'
 import stores from './stores'
 import "./App.css";
 
-/*var color = function getRandomColor() {
-  var letters = '0123456789ABCDEF'.split('');
-  var color = '#';
-  for (var i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
-}
+// var color = function getRandomColor() {
+//   var letters = '0123456789ABCDEF'.split('');
+//   var color = '#';
+//   for (var i = 0; i < 6; i++) {
+//     color += letters[Math.floor(Math.random() * 16)];
+//   }
+//   return color;
+// }
 
-setInterval(function() {
-  document.getElementById("root").style.backgroundColor = color();
-}, 200);*/
+// setInterval(function() {
+//   document.getElementById("root").style.backgroundColor = color();
+// }, 200);
 
 @observer
 class App extends React.Component {
@@ -63,12 +63,12 @@ class App extends React.Component {
       <Router basename={process.env.PUBLIC_URL}>
       <Switch>
       <Route exact path="/Sign-In">
-          <SignInForm />
+          <SignInRoute />
         </Route>
       <ProtectedRoute exact path="/ECommerce-App" component={ProductPage}>
         </ProtectedRoute>
       <Route exact path="/Login-App">
-          <LoginApp />
+          <Ticker />
         </Route>
       <Route exact path="/Event-App">
           <EventApp />

@@ -1,4 +1,4 @@
-import { observable, action, computed } from 'mobx';
+import { observable, action, computed, toJS } from 'mobx';
 import { observer, reaction } from 'mobx-react';
 import { bindPromiseWithOnSuccess } from '@ib/mobx-promise'
 import {
@@ -52,8 +52,7 @@ class ProductStore {
     setProductsListAPIError(error) {
         this.getProductListAPIError = error
     }
-    @action.bound
-    onSelectSize(selectedSize) {
+    onSelectSize = (selectedSize) => {
         if (this.sizeFilter.includes(selectedSize)) {
             let index = this.sizeFilter.indexOf(selectedSize)
             this.sizeFilter.splice(index, 1)
@@ -69,24 +68,40 @@ class ProductStore {
     onChangeSortBy(sortVal) {
         this.sortBy = sortVal
     }
-    @computed
-    get sortedAndFilteredProducts() {
-        let productsToDisplay = []
+    @action.bound
+    filterProductsBasedOnSize(productList) {
+        let { sizeFilter } = this
         let filteredProductsOnSize = []
-        let filteredProductsOnSort = []
-        filteredProductsOnSize = (this.sizeFilter.length !== 0) ?
-            this.productList.filter((eachProduct) => {
-                if (this.sizeFilter.filter((size) => eachProduct.availableSizes.includes(size)).length)
+        return filteredProductsOnSize = (sizeFilter.length !== 0) ?
+            productList.filter((eachProduct) => {
+                if (sizeFilter.filter((size) => eachProduct.availableSizes.includes(size)).length)
                     return eachProduct
             }) : this.productList
-        filteredProductsOnSort = (this.sortBy === "ASCENDING") ?
+    }
+    @action.bound
+    filterProductsOnSort(filteredProductsOnSize) {
+        let filteredProductsOnSort = []
+        return filteredProductsOnSort = (this.sortBy === "ASCENDING") ?
             filteredProductsOnSize.sort((a, b) => a.price > b.price ? 1 : -1) :
             filteredProductsOnSize.sort((a, b) => a.price < b.price ? 1 : -1)
-        productsToDisplay = filteredProductsOnSort.filter((product) => {
+    }
+    @action.bound
+    filterProductsBasedOnText(filterProductsOnSort) {
+        let productsToDisplay = []
+        return productsToDisplay = filterProductsOnSort.filter((product) => {
             if (product.title.indexOf(this.selectedText) != -1)
                 return product
         })
+    }
+    @computed
+    get sortedAndFilteredProducts() {
+        let { productList, selectedText, sortBy, sizeFilter } = this;
+        let sizes = toJS(sizeFilter)
+        let filterProductsBasedOnSize = this.filterProductsBasedOnSize(productList)
+        let filterProductsOnSort = this.filterProductsOnSort(filterProductsBasedOnSize)
+        let productsToDisplay = this.filterProductsBasedOnText(filterProductsOnSort)
         return productsToDisplay
+
     }
 }
 export { ProductStore }

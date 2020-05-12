@@ -14,30 +14,24 @@ class CartStore {
         this.cartProductList = []
     }
     @action.bound
-    onClickAddToCart(product) {
-        // const { productId } = product;
-
-        // if (this.cartProductList.has(productId)) {
-        //     this.cartProductList.get(productId).incrementQuantity();
-        // }
-        // else {
-        //     const cartItemData = {
-        //         productId,
-        //         cartItemId: Math.random(),
-        //         quantity: 1
-        //     };
-        //     this.cartProductList.set(productId, cartItemData);
-        // }
+    onClickAddToCart(productId) {
         let cartItem = []
+        let product = this.getProduct(productId)
         cartItem = this.cartProductList.filter((cartItem) => {
-            if (cartItem.product.productId === product.productId)
+            if (cartItem.product.productId === productId)
                 return cartItem
         })
         if (cartItem.length != 0 && this.cartProductList.length != 0) {
             cartItem[0].incrementQuantity()
         }
         else
-            this.cartProductList.push(new CartItemModel({ product: product, cartItemId: Math.random() }))
+            this.cartProductList.push(new CartItemModel({ product: product[0], cartItemId: Math.random() }))
+
+    }
+    @action.bound
+    getProduct(productId) {
+        return this.productStore.productList.filter((product) => product.productId === productId)
+
     }
     @action.bound
     clearCart() {

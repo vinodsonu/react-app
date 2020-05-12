@@ -1,7 +1,7 @@
 import React from "react"
-import { observer, inject } from 'mobx-react'
+import { observer } from 'mobx-react'
 import { observable, action } from 'mobx'
-import { withRouter } from "react-router-dom";
+
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -18,63 +18,29 @@ import {
 }
 from '../../styledComponents'
 
-@inject("authStore")
 @observer
 class SignInForm extends React.Component {
-    @observable userName
-    @observable password
-    @observable errorMessage
-    constructor() {
-        super()
-        this.userName = ''
-        this.password = ''
-        this.errorMessage = ''
-    }
-    @action.bound
-    getStore() {
-        return this.props.authStore
-    }
-    @action.bound
-    onChangeUserName(event) {
-        this.userName = event.target.value
-    }
-    @action.bound
-    onChangePassword(event) {
-        this.password = event.target.value
-    }
-    @action.bound
-    onClickSignIn(event) {
-        event.preventDefault()
-        if (this.userName != '' && this.password != '') {
-            this.getTokenForLogin()
-        }
-        else {
-            this.errorMessage = this.userName.length === 0 ?
-                "Please enter username" :
-                "Please enter password"
-        }
-    }
-    @action.bound
-    async getTokenForLogin() {
-        const { history } = this.props
-        const response = await this.getStore().userSignIn();
-        if (response[0] != undefined)
-            history.replace({ pathname: `/ECommerce-App` })
-
-    }
     render() {
+        const {
+            onChangeUserName,
+            onChangePassword,
+            userName,
+            password,
+            errorMessage,
+            onClickSignIn
+        } = this.props
         return (
             <MainDiv>
             <FormContainer>
                 <FormHeading>Sign In</FormHeading>
                 <UserInput type="text" placeholder="Username"
-                onChange={this.onChangeUserName} value={this.userName}></UserInput>
+                onChange={onChangeUserName} value={userName}></UserInput>
                 <UserPassword type="password" placeholder="Password"
-                onChange={this.onChangePassword} value={this.password}></UserPassword>
-                <SignInButton data-testid='sign-in-button' type="button" onClick={this.onClickSignIn}>Sign In</SignInButton>
-                <SpanMessage>{this.errorMessage}</SpanMessage>
+                onChange={onChangePassword} value={password}></UserPassword>
+                <SignInButton data-testid='sign-in-button' type="button" onClick={onClickSignIn}>Sign In</SignInButton>
+                <SpanMessage>{ errorMessage}</SpanMessage>
             </FormContainer>
             </MainDiv>)
     }
 }
-export default withRouter(SignInForm)
+export { SignInForm }

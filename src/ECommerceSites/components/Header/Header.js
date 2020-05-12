@@ -13,18 +13,15 @@ from '../../styledComponents'
 @observer
 class Header extends React.Component {
     @action.bound
-    getStore() {
-        return this.props.productStore
-    }
-    @action.bound
     onChange = (event) => {
-        this.getStore().onChangeSelectedText(event.target.value)
+        this.props.onChangeSelectedText(event.target.value)
     }
     render() {
         return (<HeaderDiv>
-        <ProductsPara>products found:{this.getStore().sortedAndFilteredProducts.length}</ProductsPara>
-        <SearchBar placeholder="Search Product" type="text"onChange={this.onChange}></SearchBar>
-        <ProductSort onChangeSortBy={this.getStore().onChangeSortBy}/>
+        <ProductsPara>products found:{this.props.productsFound}</ProductsPara>
+        <SearchBar placeholder="Search Product" defaultValue="" type="text" 
+        onChange={this.onChange}></SearchBar>
+        <ProductSort data-testid='Product_Sort' onChangeSortBy={this.props.onChangeSortBy}/>
         </HeaderDiv>)
     }
 }

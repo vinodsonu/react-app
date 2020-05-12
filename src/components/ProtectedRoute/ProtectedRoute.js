@@ -2,7 +2,7 @@ import { Route, Redirect } from "react-router-dom";
 import React from "react";
 
 import ProductPage from '../../ECommerceSites/components/ProductPage'
-import SignInForm from '../../Authentication/components/SignInForm'
+import SignInRoute from '../../Authentication/routes/SignInRoute'
 
 import { getAccessToken } from '../../utils/StorageUtils'
 
@@ -12,7 +12,7 @@ class ProtectedRoute extends React.Component {
         console.log(Component)
         if (getAccessToken() === undefined)
             return (
-                <Redirect exact path="/Sign-In" component={SignInForm}></Redirect>
+                <Redirect exact path="/Sign-In" component={SignInRoute}></Redirect>
             )
         else
             return (

@@ -1,6 +1,6 @@
 /*global localStorage*/
 import React from 'react'
-import { observable, action } from 'mobx';
+import { observable, action, autorun, toJS, computed, get, set } from 'mobx';
 import { observer, Provider, inject } from 'mobx-react';
 
 import gridStore from '../../../stores/GridStore/GridStore.js'
@@ -13,6 +13,17 @@ import AttemptsGraph from './AttemptsGraph'
 import data from './data.json'
 
 const gameFieldWidth = data[0]["gridWidth"];
+let message = observable({
+    title: "Foo",
+    author: {
+        name: "Michel"
+    },
+    likes: ["John", "Sara"]
+})
+autorun(() => {
+    setTimeout(() => console.log(message.likes.join(", ")), 0)
+})
+message.likes.push("Jennifer")
 @observer
 class GridMemoryGame extends React.Component {
     @observable cells = [];
@@ -21,7 +32,6 @@ class GridMemoryGame extends React.Component {
         gridStore.goToInitialLevelAndUpdateCells();
     }
     componentDidMount() {
-        console.log("local");
         let currentLevel = localStorage.getItem('level')
         let currentTopLevel = localStorage.getItem('topLevel')
         if (currentLevel) {

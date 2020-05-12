@@ -1,1 +1,2 @@
-export { SignInRoute as default } from './SignInRoute'
+import SignInRoute from './SignInRoute'
+export default SignInRoute

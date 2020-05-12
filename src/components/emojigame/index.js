@@ -7,6 +7,8 @@ import WinOrLoss from './components/WinOrLoss.js';
 import HowToPlay from './components/HowToPlay.js';
 import { ImageContainer, MainDiv } from './styledComponents';
 const emojiNames = ["Eploding Head", "Grinning Face with Sweat", "Smiling Face with Heart-Eyes", "Smirking Face", "Thinking Face", "Winking Face", "Grinning Face", "Crying Face", "Astonished Face", "Face with Tears of Joy", "Star-Struck", "Winking Face with Tongue"];
+
+
 class EmojiGame extends React.Component {
     constructor() {
         super();

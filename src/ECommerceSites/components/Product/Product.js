@@ -42,7 +42,8 @@ class Product extends React.Component {
     }
     @action.bound
     onClickAddToCart() {
-        this.getCartStore().onClickAddToCart(this.getProduct())
+        this.getCartStore().onClickAddToCart(this.getProduct().productId)
+        console.log(1, this.getProduct())
         toast.warn("Product Added To Your Cart");
     }
     render() {

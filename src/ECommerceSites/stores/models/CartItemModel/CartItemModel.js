@@ -1,7 +1,7 @@
 import { observable, action } from 'mobx'
 class CartItemModel {
     @observable quantity
-    productId
+    product
     cartItemId
     constructor(item) {
         this.quantity = 1;

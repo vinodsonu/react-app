@@ -1,6 +1,6 @@
 import React from 'react';
 import { observer } from 'mobx-react';
-import { observable, action, computed, reaction } from 'mobx';
+import { observable, action, computed, reaction, autorun } from 'mobx';
 import {
     API_INITIAL,
     API_FETCHING,
@@ -11,24 +11,27 @@ from '@ib/api-constants';
 
 import HomePage from '../HomePage/index'
 
-@observer
-class LoginApp extends React.Component {
-    @observable apiStatus = API_INITIAL
-    @action.bound
-    setLoginAPIStatus() {
-        this.apiStatus = API_SUCCESS
+class Ticker extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = { count: 20 }
     }
-    @action.bound
-    redirect() {
-        HomePage.gotoGridScreenIfLoggedIn(12)
+    onIncrement = () => {
+        const { count } = this.state
+        this.setState({ count: count + 1 })
+        this.setState(prevState => ({ count: prevState.count + 1 }))
+        this.setState({ count: count + 1 })
+        this.setState({ count: count + 10 })
+        this.setState({ count: count + 100 })
+        console.log(count)
     }
-    onChangeAPIStatus = reaction(() => this.apiStatus,
-        (status) => { if (status === API_SUCCESS) this.redirect() })
     render() {
-        console.log(HomePage.token)
+        const { count } = this.state
         return (<div>
-        <button onClick={this.setLoginAPIStatus}>login</button>
+        <p>{count}</p>
+        <button onClick={this.onIncrement}>Increment</button>
         </div>)
     }
 }
-export default LoginApp
+
+export default Ticker

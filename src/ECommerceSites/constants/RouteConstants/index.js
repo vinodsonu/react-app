@@ -1,0 +1,2 @@
+const E_COMMERCE_PRODUCTS_PATH = "/ECommerce-App"
+export { E_COMMERCE_PRODUCTS_PATH }

@@ -6,4 +6,4 @@ import SignInRoute from "./SignInRoute"
 
 const routes = [<Route path={SIGN_IN_PATH} component={SignInRoute} />]
 
-export default routes
+export { routes }
