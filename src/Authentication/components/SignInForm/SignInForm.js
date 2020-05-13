@@ -18,8 +18,18 @@ import {
 }
 from '../../styledComponents'
 
+const DisplayComponent = (props) => {
+    return props.children
+}
+
 @observer
 class SignInForm extends React.Component {
+    userNameRef = React.createRef();
+    passwordRef = React.createRef();
+    componentDidMount() {
+        this.userNameRef.current.focus();
+        this.passwordRef.current.focus();
+    }
     render() {
         const {
             onChangeUserName,
@@ -33,12 +43,13 @@ class SignInForm extends React.Component {
             <MainDiv>
             <FormContainer>
                 <FormHeading>Sign In</FormHeading>
-                <UserInput type="text" placeholder="Username"
+                <UserInput type="text" ref={this.userNameRef} placeholder="Username"
                 onChange={onChangeUserName} value={userName}></UserInput>
-                <UserPassword type="password" placeholder="Password"
+                <UserPassword type="password" ref={this.passwordRef} placeholder="Password"
                 onChange={onChangePassword} value={password}></UserPassword>
                 <SignInButton data-testid='sign-in-button' type="button" onClick={onClickSignIn}>Sign In</SignInButton>
                 <SpanMessage>{ errorMessage}</SpanMessage>
+                <DisplayComponent>{null}</DisplayComponent>
             </FormContainer>
             </MainDiv>)
     }
