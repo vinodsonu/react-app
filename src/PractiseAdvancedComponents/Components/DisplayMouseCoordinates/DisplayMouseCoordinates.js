@@ -4,6 +4,7 @@ import { observer } from 'mobx-react'
 
 import {
     ToggleHeading,
+    ComponentContainer,
 
 }
 from '../../styledComponents'
@@ -11,10 +12,10 @@ class DisplayMouseCoordinates extends React.Component {
     render() {
         let { x, y } = this.props;
         return (
-            <React.Fragment>
+            <ComponentContainer>
             <ToggleHeading> DisplayMouseCoordinates  </ToggleHeading> 
             <div> the mouse position: { x }, { y } </div>
-            </React.Fragment>
+            </ComponentContainer>
         );
     }
 }

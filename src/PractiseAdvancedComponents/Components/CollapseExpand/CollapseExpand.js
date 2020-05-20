@@ -6,6 +6,7 @@ import {
     SubmitBtn,
     TextDiv,
     ToggleHeading,
+    SubContainer,
 
 }
 from '../../styledComponents'
@@ -17,7 +18,6 @@ class CollapseExpand extends React.Component {
     @action.bound
     listToDisplay() {
         let { toggleStatus, list } = this.props
-        console.log(123, list)
         if (toggleStatus)
             return list.map((item) => <TextDiv key={item}>{item}</TextDiv>)
         else
@@ -30,7 +30,13 @@ class CollapseExpand extends React.Component {
         return (
             <React.Fragment>
             <ToggleHeading>CollapseExpand</ToggleHeading>
+            <SubContainer>
+            <div style={{display:'inline'}}>
+            {listTitle}
+            </div>
             <SubmitBtn onClick={onToggle}>{btnText}</SubmitBtn>
+            </SubContainer>
+            
             {this.listToDisplay()}
             </React.Fragment>
         )

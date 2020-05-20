@@ -9,6 +9,13 @@ import { CollapseExpand } from '../../../PractiseAdvancedComponents/Components/C
 import { ScreenDetectors } from '../../../PractiseAdvancedComponents/Components/ScreenDetectors'
 import { MouseCoordinates } from '../../../PractiseAdvancedComponents/Components/MouseCoordinates'
 import { DisplayMouseCoordinates } from '../../../PractiseAdvancedComponents/Components/DisplayMouseCoordinates'
+
+import {
+    MainContainer,
+    MainHeading,
+}
+from '../../../PractiseAdvancedComponents/styledComponents'
+
 const EnhancedViewEditToggle = withToggle(ViewEditToggle)
 const EnhancedCollapseExpand = withToggle(CollapseExpand)
 const EnhancedScreenDetectors = withScreenSizeDetectors(ScreenDetectors)
@@ -16,15 +23,16 @@ const EnhancedScreenDetectors = withScreenSizeDetectors(ScreenDetectors)
 class PracticeAdvancedConceptsRoute extends React.Component {
     render() {
         return (
-            <div>
+            <MainContainer>
+            <MainHeading>HOC's Usage</MainHeading>
             <EnhancedViewEditToggle/>
-            {console.log(typeof <EnhancedViewEditToggle/>)}
-            <EnhancedCollapseExpand list={['apple','banana','mango']} listTitle={'list'}/>
+            <EnhancedCollapseExpand list={['apple','banana','mango']} listTitle={'Sample Shopping List:'}/>
             <EnhancedScreenDetectors/>
+            <MainHeading>Render Props Usage</MainHeading>
              <MouseCoordinates render={
                  (x,y)=>(<DisplayMouseCoordinates x={x} y={y}/>)
              }/>
-            </div>
+            </MainContainer>
         )
     }
 }

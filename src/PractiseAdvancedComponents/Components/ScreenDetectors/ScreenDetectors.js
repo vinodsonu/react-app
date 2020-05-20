@@ -5,6 +5,7 @@ import { observer } from 'mobx-react'
 import {
     TextDiv,
     ToggleHeading,
+    ComponentContainer,
 }
 from '../../styledComponents'
 
@@ -25,11 +26,11 @@ class ScreenDetectors extends React.Component {
     }
     render() {
         return (
-            <React.Fragment>
+            <ComponentContainer>
             <ToggleHeading>ScreenDetectors</ToggleHeading>
             <TextDiv>displayType</TextDiv>
             <TextDiv>{this.deviceType()}</TextDiv>
-            </React.Fragment>
+            </ComponentContainer>
         )
     }
 }

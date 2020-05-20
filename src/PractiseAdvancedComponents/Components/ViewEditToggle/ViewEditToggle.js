@@ -7,6 +7,8 @@ import {
     TextDiv,
     SubmitBtn,
     ToggleHeading,
+    SubContainer,
+    ComponentContainer,
 
 }
 from '../../styledComponents'
@@ -44,11 +46,14 @@ class ViewEditToggle extends React.Component {
         let { onToggle, toggleStatus } = this.props
         let btnText = toggleStatus ? ("edit") : ("cancel")
         return (
-            <React.Fragment>
+            <ComponentContainer>
             <ToggleHeading>ViewEditToggle</ToggleHeading>
-            {this.componentToDisplay()}
+            <SubContainer>
+             {this.componentToDisplay()}
             <SubmitBtn onClick={onToggle}>{btnText}</SubmitBtn>
-            </React.Fragment>
+            </SubContainer>
+           
+            </ComponentContainer>
         )
     }
 
