@@ -1,0 +1,1 @@
+export { MouseCoordinates } from './MouseCoordinates'

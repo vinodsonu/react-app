@@ -26,6 +26,8 @@ class HomePage extends React.Component {
         </a>
         <Link to="/page-1">Page 1</Link>
         <Link to="/Login-App">LoginApp</Link>
+        <Link to="/Login-App">LoginApp</Link>
+        <Link to="/practice-advanced-concepts">practice-advanced-concepts</Link>
          <Link to="/Sign-In">SignInForm</Link>
         <Link to="/ECommerce-App">ECommerceApp</Link>
         <Link to="/grid-game">Gridgame</Link>

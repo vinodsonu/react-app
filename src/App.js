@@ -23,22 +23,23 @@ import authenticationStores from './Authentication/stores'
 import ECommerceAppStores from './ECommerceSites/stores'
 import AuthenticationRoutes from './Authentication/routes'
 import ProtectedRoute from './components/ProtectedRoute'
+import { PracticeAdvancedConceptsRoute } from './Common/routes/PracticeAdvancedConceptsRoute'
 // import ECommerceAppRoutes from './ECommerceSites/routes'
 import stores from './stores'
 import "./App.css";
 
 // var color = function getRandomColor() {
-//   var letters = '0123456789ABCDEF'.split('');
-//   var color = '#';
-//   for (var i = 0; i < 6; i++) {
-//     color += letters[Math.floor(Math.random() * 16)];
-//   }
-//   return color;
-// }
+    //   var letters = '0123456789ABCDEF'.split('');
+    //   var color = '#';
+    //   for (var i = 0; i < 6; i++) {
+    //     color += letters[Math.floor(Math.random() * 16)];
+    //   }
+    //   return color;
+    // }
 
-// setInterval(function() {
-//   document.getElementById("root").style.backgroundColor = color();
-// }, 200);
+    // setInterval(function() {
+    //   document.getElementById("root").style.backgroundColor = color();
+    // }, 200);
 
 @observer
 class App extends React.Component {
@@ -64,6 +65,9 @@ class App extends React.Component {
       <Switch>
       <Route exact path="/Sign-In">
           <SignInRoute />
+        </Route>
+        <Route exact path="/practice-advanced-concepts">
+          <PracticeAdvancedConceptsRoute />
         </Route>
       <ProtectedRoute exact path="/ECommerce-App" component={ProductPage}>
         </ProtectedRoute>
