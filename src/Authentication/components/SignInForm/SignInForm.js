@@ -21,7 +21,7 @@ from '../../styledComponents'
 const DisplayComponent = (props) => {
     return props.children
 }
-
+const SignInButtonFun=()=><SignInButton data-testid='sign-in-button' type="button" >Sign In</SignInButton>
 @observer
 class SignInForm extends React.Component {
     userNameRef = React.createRef();
@@ -47,11 +47,11 @@ class SignInForm extends React.Component {
                 onChange={onChangeUserName} value={userName}></UserInput>
                 <UserPassword type="password" ref={this.passwordRef} placeholder="Password"
                 onChange={onChangePassword} value={password}></UserPassword>
-                <SignInButton data-testid='sign-in-button' type="button" onClick={onClickSignIn}>Sign In</SignInButton>
+                <SignInButtonFun onClick={onClickSignIn}/>
                 <SpanMessage>{ errorMessage}</SpanMessage>
                 <DisplayComponent>{null}</DisplayComponent>
             </FormContainer>
             </MainDiv>)
     }
 }
-export { SignInForm }
+export { SignInForm,SignInButtonFun}

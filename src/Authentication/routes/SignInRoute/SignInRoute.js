@@ -3,7 +3,7 @@ import { observer, inject } from 'mobx-react'
 import { observable, action } from 'mobx'
 import { withRouter } from "react-router-dom";
 
-import SignInForm from '../../components/SignInForm'
+import {SignInForm}  from '../../components/SignInForm'
 
 @inject("authStore")
 @observer
