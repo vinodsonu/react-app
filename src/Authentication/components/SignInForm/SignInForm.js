@@ -21,15 +21,15 @@ from '../../styledComponents'
 const DisplayComponent = (props) => {
     return props.children
 }
-const SignInButtonFun=()=><SignInButton data-testid='sign-in-button' type="button" >Sign In</SignInButton>
+const SignInButtonFun = (props) => <SignInButton 
+onClick = { props.onClickSignIn } { ...props } type = "button"> Sign In </SignInButton>
+
+const InputFieldFun=(props)=><UserInput type={props.type} onChange={props.onChange} value={props.value}/>
+
 @observer
 class SignInForm extends React.Component {
     userNameRef = React.createRef();
     passwordRef = React.createRef();
-    componentDidMount() {
-        this.userNameRef.current.focus();
-        this.passwordRef.current.focus();
-    }
     render() {
         const {
             onChangeUserName,
@@ -43,15 +43,15 @@ class SignInForm extends React.Component {
             <MainDiv>
             <FormContainer>
                 <FormHeading>Sign In</FormHeading>
-                <UserInput type="text" ref={this.userNameRef} placeholder="Username"
-                onChange={onChangeUserName} value={userName}></UserInput>
-                <UserPassword type="password" ref={this.passwordRef} placeholder="Password"
-                onChange={onChangePassword} value={password}></UserPassword>
-                <SignInButtonFun onClick={onClickSignIn}/>
+                <InputFieldFun type="text"  placeholder="Username"
+                onChange={onChangeUserName} value={userName}/>
+                <InputFieldFun type="password" placeholder="Password"
+                onChange={onChangePassword} value={password}/>
+                <SignInButtonFun onClickSignIn={onClickSignIn} />
                 <SpanMessage>{ errorMessage}</SpanMessage>
                 <DisplayComponent>{null}</DisplayComponent>
             </FormContainer>
             </MainDiv>)
     }
 }
-export { SignInForm,SignInButtonFun}
+export {SignInForm, SignInButtonFun,InputFieldFun  }

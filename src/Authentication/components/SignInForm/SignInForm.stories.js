@@ -3,7 +3,7 @@ import { action } from '@storybook/addon-actions'
 import { withKnobs, text, color } from '@storybook/addon-knobs'
 
 import '../../styledComponents'
-import { SignInButtonFun,SignInForm } from './SignInForm'
+import {SignInForm, SignInButtonFun,InputFieldFun } from './SignInForm'
 
 const label = 'Color';
 const defaultValue = '#ff00ff';
@@ -12,9 +12,9 @@ const value = color(label, defaultValue, groupId);
 
 export default {
     component: SignInButtonFun,
-    title: 'SignInForm/SignInbutton',
+    title: 'Common/Buttons/SignInbutton',
 }
-export const onClickWithInCurrectUserName = () => (
+export const SignInButton = () => (
     <SignInButtonFun
     onClickSignIn={action('onSubmit')}
     />
@@ -25,12 +25,12 @@ export const onClickWithInCurrectPassword = () => (
     />
 )
 
-// export const knobs = () => <SignInForm
-//     errorMessage={text('errorMessage','incorrect Credentials'),color(value)}
-//     userName={color(value)}
-//     password={color(value)}
-// />
+// // export const knobs = () => <SignInForm
+// //     errorMessage={text('errorMessage','incorrect Credentials'),color(value)}
+// //     userName={color(value)}
+// //     password={color(value)}
+// // />
 
-// knobs.story = {
-//     decorators: [withKnobs]
+// // knobs.story = {
+// //     decorators: [withKnobs]
 // }
