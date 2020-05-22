@@ -21,7 +21,12 @@ from '../../styledComponents'
 const DisplayComponent = (props) => {
     return props.children
 }
-const SignInButtonFun=()=><SignInButton data-testid='sign-in-button' type="button" >Sign In</SignInButton>
+const SignInButtonFun = (props) => <SignInButton data-testid = 'sign-in-button'
+onClick = { props.onClickSignIn } { ...props } type = "button"> Sign In </SignInButton>
+
+const SignInInput = (props) => <props.Component type={props.type}  placeholder={props.placeholder}
+                onChange={props.onChangeUserName} value={props.userName} />
+
 @observer
 class SignInForm extends React.Component {
     userNameRef = React.createRef();
@@ -43,15 +48,29 @@ class SignInForm extends React.Component {
             <MainDiv>
             <FormContainer>
                 <FormHeading>Sign In</FormHeading>
-                <UserInput type="text" ref={this.userNameRef} placeholder="Username"
-                onChange={onChangeUserName} value={userName}></UserInput>
-                <UserPassword type="password" ref={this.passwordRef} placeholder="Password"
-                onChange={onChangePassword} value={password}></UserPassword>
-                <SignInButtonFun onClick={onClickSignIn}/>
+                <SignInInput type="text"  placeholder="Username"
+                onChangeUserName={onChangeUserName} value={userName} Component="UserInput" />
+                <SignInInput type="password" placeholder="Password"
+                onChange={onChangePassword} value={password}/>
+                <SignInButtonFun onClickSignIn={onClickSignIn} />
                 <SpanMessage>{ errorMessage}</SpanMessage>
                 <DisplayComponent>{null}</DisplayComponent>
             </FormContainer>
             </MainDiv>)
     }
 }
-export { SignInForm,SignInButtonFun}
+export { SignInForm, SignInButtonFun, SignInInput                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    }
+
+
+// <MainDiv>
+//             <FormContainer>
+//                 <FormHeading>Sign In</FormHeading>
+//                 <UserInput type="text" ref={this.userNameRef} placeholder="Username"
+//                 onChange={onChangeUserName} value={userName}></UserInput>
+//                 <UserPassword type="password" ref={this.passwordRef} placeholder="Password"
+//                 onChange={onChangePassword} value={password}></UserPassword>
+//                 <SignInButtonFun onClickSignIn={onClickSignIn} />
+//                 <SpanMessage>{ errorMessage}</SpanMessage>
+//                 <DisplayComponent>{null}</DisplayComponent>
+//             </FormContainer>
+//             </MainDiv>)
