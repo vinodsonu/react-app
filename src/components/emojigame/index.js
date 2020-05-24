@@ -5,6 +5,7 @@ import NavBar from './components/NavBar.js';
 import EmojiCard from './components/EmojiCard.js';
 import WinOrLoss from './components/WinOrLoss.js';
 import HowToPlay from './components/HowToPlay.js';
+import { StateComponent } from './components/StateComponent.js';
 import { ImageContainer, MainDiv } from './styledComponents';
 const emojiNames = ["Eploding Head", "Grinning Face with Sweat", "Smiling Face with Heart-Eyes", "Smirking Face", "Thinking Face", "Winking Face", "Grinning Face", "Crying Face", "Astonished Face", "Face with Tears of Joy", "Star-Struck", "Winking Face with Tongue"];
 
@@ -69,15 +70,27 @@ class EmojiGame extends React.Component {
     }
     setTopScore = () => { { this.state.score > this.state.topScore && this.setState({ topScore: this.state.score }) };
     }
+    componentToBedisplayed = () => {
+        let { gameState } = this.state;
+        let gameComponent = null;
+        if (gameState !== "PLAYING")
+            return <WinOrLoss onPlayAgainClick={this.onPlayAgainClick} 
+        score={this.state.score} selectedTheme={this.props.selectedTheme}
+         isWin={(this.state.gameState==='WON')?(true):(false)} />
+        else {
+            let { gameState } = this.state;
+            let gameComponent = this.state.emojis.map((emoji) => {
+                return <EmojiCard selectedTheme={this.props.selectedTheme} onChangeTheme={this.props.onChangeTheme} emoji={emoji} onEmojiClick={this.onEmojiClick}/>
+            })
+            return gameComponent
+
+        }
+    }
     render() {
-        let gameComponent = this.state.emojis.map((emoji) => {
-            return <EmojiCard selectedTheme={this.props.selectedTheme} onChangeTheme={this.props.onChangeTheme} emoji={emoji} onEmojiClick={this.onEmojiClick}/>
-        })
-        let resultComponent = <WinOrLoss onPlayAgainClick={this.onPlayAgainClick} score={this.state.score} selectedTheme={this.props.selectedTheme} isWin={(this.state.gameState==='WON')?(true):(false)} />
         return (<MainDiv  onChangeTheme={this.props.onChangeTheme} selectedTheme={this.props.selectedTheme}>
         <NavBar onChangeTheme={this.props.onChangeTheme} selectedTheme={this.props.selectedTheme} score={this.state.score} topScore={this.state.topScore}/>
         <ImageContainer onChangeTheme={this.props.onChangeTheme} selectedTheme={this.props.selectedTheme}>
-                {(this.state.gameState==="PLAYING")?(gameComponent):(resultComponent)}
+        {this.componentToBedisplayed()}
         </ImageContainer>
         <HowToPlay selectedTheme={this.props.selectedTheme} onChangeTheme={this.props.onChangeTheme} />
         </MainDiv>)

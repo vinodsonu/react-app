@@ -50,7 +50,7 @@ class Product extends React.Component {
         const moneyPaidPerInstallMent = Math.round(this.props.product.price / this.props.product.installmentsCount, 4)
         return (<ProductDiv>
             <ProductSubDiv>
-            <Image style={{width:'250px'}}> <InnerImageZoom src={this.getProduct().imageURL}/></Image>
+            <Image style={{width:'200px'}}> <InnerImageZoom src={this.getProduct().imageURL}/></Image>
             <ProductTitle>{this.getProduct().title}</ProductTitle>
             <spaceDiv>-</spaceDiv>
             <p>

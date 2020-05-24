@@ -1,20 +1,19 @@
 import React from "react"
 import { withRouter } from "react-router";
-import { ResultContainer, ResultSubDiv, ResultScoreDiv, PlayAgainButton } from './../styledComponents.js'
+
+import { StateComponent } from './StateComponent'
+
 class WinOrLoss extends React.Component {
-    constructor() {
-        super();
-    }
     onPlayAgainClick = () => {
         this.props.onPlayAgainClick();
     }
+
     render() {
-        alert(this.props.isWin);
-        return (<ResultContainer>
-        <ResultScoreDiv>{this.props.score}</ResultScoreDiv>
-        <ResultSubDiv isWin={this.props.isWin}>{(this.props.isWin)?("You Win!"):("You Lose!")}</ResultSubDiv>
-        <PlayAgainButton selectedTheme={this.props.selectedTheme} onClick={this.props.onPlayAgainClick}>Play Again</PlayAgainButton>
-        </ResultContainer>)
+        return (<React.Fragment>
+       <StateComponent  onPlayAgainClick={this.onPlayAgainClick} 
+        score={this.props.score} selectedTheme={this.props.selectedTheme} 
+        isWin={(this.props.gameState==='WON')?(true):(false)}/>
+        </React.Fragment>)
     }
 }
 export default withRouter(WinOrLoss);

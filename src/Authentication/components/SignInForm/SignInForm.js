@@ -21,20 +21,15 @@ from '../../styledComponents'
 const DisplayComponent = (props) => {
     return props.children
 }
-const SignInButtonFun = (props) => <SignInButton data-testid = 'sign-in-button'
-onClick = { props.onClickSignIn } { ...props } type = "button"> Sign In </SignInButton>
+const SignInButtonFun = (props) => <SignInButton 
+onClick = { props.onClickSignIn } { ...props } type = "button">{props.text}</SignInButton>
 
-const SignInInput = (props) => <props.Component type={props.type}  placeholder={props.placeholder}
-                onChange={props.onChangeUserName} value={props.userName} />
+const InputFieldFun = (props) => <UserInput type={props.type} onChange={props.onChange} value={props.value}/>
 
 @observer
 class SignInForm extends React.Component {
     userNameRef = React.createRef();
     passwordRef = React.createRef();
-    componentDidMount() {
-        this.userNameRef.current.focus();
-        this.passwordRef.current.focus();
-    }
     render() {
         const {
             onChangeUserName,
@@ -48,18 +43,20 @@ class SignInForm extends React.Component {
             <MainDiv>
             <FormContainer>
                 <FormHeading>Sign In</FormHeading>
-                <SignInInput type="text"  placeholder="Username"
-                onChangeUserName={onChangeUserName} value={userName} Component="UserInput" />
-                <SignInInput type="password" placeholder="Password"
+                <InputFieldFun type="text"  placeholder="Username"
+                onChange={onChangeUserName} value={userName}/>
+                <InputFieldFun type="password" placeholder="Password"
                 onChange={onChangePassword} value={password}/>
-                <SignInButtonFun onClickSignIn={onClickSignIn} />
+                <SignInButtonFun 
+                onClickSignIn={onClickSignIn}
+                text={"Sign In"}
+                />
                 <SpanMessage>{ errorMessage}</SpanMessage>
-                <DisplayComponent>{null}</DisplayComponent>
             </FormContainer>
             </MainDiv>)
     }
 }
-export { SignInForm, SignInButtonFun, SignInInput                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    }
+export { SignInForm, SignInButtonFun, InputFieldFun }
 
 
 // <MainDiv>

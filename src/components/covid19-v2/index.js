@@ -14,14 +14,14 @@ class CountriesDashboardApp extends React.Component {
         super(props)
 
         this.state = {
-            countries: [],
+            countries: null,
             selectedTheme: '',
             searchText: '',
             selectedRegion: 'All',
         }
     }
     componentDidMount() {
-        this.getCountries();
+        this.getCountries()
     }
     getCountries = () => {
         fetch('https://restcountries.eu/rest/v2/all')
@@ -75,7 +75,7 @@ class CountriesDashboardApp extends React.Component {
         this.setState({ selectedRegion: region });
     }
     navigateToCountryDetailsPage = (cardDetails) => {
-        const { history } = this.props;
+        const { history } = this.props
         history.push({ pathname: `country-dashboard-app/:${cardDetails.alpha3Code}` })
     }
     showLoading = () => {

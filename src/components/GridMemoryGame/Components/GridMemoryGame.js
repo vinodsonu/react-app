@@ -13,17 +13,6 @@ import AttemptsGraph from './AttemptsGraph'
 import data from './data.json'
 
 const gameFieldWidth = data[0]["gridWidth"];
-let message = observable({
-    title: "Foo",
-    author: {
-        name: "Michel"
-    },
-    likes: ["John", "Sara"]
-})
-autorun(() => {
-    setTimeout(() => console.log(message.likes.join(", ")), 0)
-})
-message.likes.push("Jennifer")
 @observer
 class GridMemoryGame extends React.Component {
     @observable cells = [];

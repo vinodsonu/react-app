@@ -1,4 +1,9 @@
 export {
+    PaginationDiv,
+    PrevBtn,
+    PageNumber,
+    SlashDiv,
+    ForwardBtn,
     CartItemContainer,
     ItemCrossButton,
     ItemImageSize,

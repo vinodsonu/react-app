@@ -12,7 +12,8 @@ class Header extends React.Component {
         <HeaderPara>Top Level:{this.props.gridStore.topLevel}</HeaderPara>
         <HeaderSubDiv>
         <LevelPara>Level:{this.props.gridStore.level}</LevelPara>
-        <HeaderButton selectedTheme={this.props.selectedTheme} onClick={this.props.onChangeTheme}>{this.props.selectedTheme.modeName}</HeaderButton>
+        <HeaderButton selectedTheme={this.props.selectedTheme} 
+        onClick={this.props.onChangeTheme}>{this.props.selectedTheme.modeName}</HeaderButton>
         </HeaderSubDiv>
         </HeaderDiv>)
     }

@@ -15,8 +15,11 @@ class CountryCard extends React.Component {
     }
     render() {
         return (
-            <div  className={`country-div ${(this.state.isImageZoomed===true)?('zoom'):('')}`}   onClick={this.navigateToCountryDetailsPage}  id={this.props.data.alpha3Code}>
-            <div className="img-container">{<img className="img-dimensions" src={this.props.data.flag}/>
+            <div  className={`country-div ${(this.state.isImageZoomed===true)?('zoom'):('')}`}   
+            onClick={this.navigateToCountryDetailsPage}  
+            id={this.props.data.alpha3Code}>
+            <div className="img-container">{<img className="img-dimensions" 
+            src={this.props.data.flag}/>
             }</div>
                 <div className="country-div-item"><b>{this.props.data.name}</b></div>
                 <div className="country-div-item">population:{this.props.data.population}</div>

@@ -6,9 +6,15 @@ class SearchCountry extends React.Component {
     }
     render() {
         return (
-            <div className="search-bar-sub-div" style={{backgroundColor:this.props.selectedTheme.name,color:(this.props.selectedTheme.id==='0')?"#2b3945":"#fff"}}>
+            <div className="search-bar-sub-div" 
+            style={{backgroundColor:this.props.selectedTheme.name,
+            color:(this.props.selectedTheme.id==='0')?"#2b3945":"#fff"}}>
             <img className="search-image" src={searchIcon}  />
-            <input  className="search-field" style={{backgroundColor:this.props.selectedTheme.name,color:(this.props.selectedTheme.id==='0')?"#2b3945":"#fff"}}  placeholder="where in the world..." type="text" name="" onChange={this.props.onChangeSearchText}  />
+            <input  className="search-field" 
+            style={{backgroundColor:this.props.selectedTheme.name,
+            color:(this.props.selectedTheme.id==='0')?"#2b3945":"#fff"}} 
+            placeholder="where in the world..." 
+            type="text" name="" onChange={this.props.onChangeSearchText}  />
             </div>
         )
     }

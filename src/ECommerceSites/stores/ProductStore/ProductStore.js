@@ -1,5 +1,5 @@
-import { observable, action, computed, toJS } from 'mobx';
-import { observer, reaction } from 'mobx-react';
+import { observable, action, computed, toJS, reaction } from 'mobx';
+import { observer } from 'mobx-react';
 import { bindPromiseWithOnSuccess } from '@ib/mobx-promise'
 import {
     API_INITIAL,
@@ -11,6 +11,9 @@ from '@ib/api-constants';
 
 import ProductModel from '../models/ProductModel'
 class ProductStore {
+    totalPages
+    @observable offset
+    @observable currentPgNum
     @observable productList
     @observable noOfProductsToDisplay = 0
     @observable getProductListAPIStatus
@@ -26,6 +29,8 @@ class ProductStore {
     }
     @action.bound
     init() {
+        this.currentPgNum = 0
+        this.offset = 0
         this.productList = []
         this.getProductListAPIStatus = API_INITIAL
         this.getProductListAPIError = null
@@ -34,15 +39,31 @@ class ProductStore {
         this.selectedText = ""
     }
     @action.bound
+    onClickPrevBtn() {
+        this.currentPgNum--
+    }
+    @action.bound
+    onClickForwardBtn() {
+        this.currentPgNum++
+    }
+    OnChangeCurrentPageNum = reaction(
+        () => this.currentPgNum,
+        (currentPgNum) => {
+            this.offset = 0;
+            this.offset += currentPgNum + 3;
+        })
+    OnChangeOffset = reaction(() => this.offset, (offset) => this.getProducts())
+    @action.bound
     getProducts() {
-        const ProductService = this.ProductService.getProductsAPI();
+        const ProductService = this.ProductService.getProductsAPI(this.offset)
         return bindPromiseWithOnSuccess(ProductService)
             .to(this.setProductsListAPIStatus, this.setProductsListAPIResponse)
             .catch(this.setProductsListAPIError);
     }
     @action.bound
     setProductsListAPIResponse(ProductResponse) {
-        this.productList = ProductResponse.map((product) => new ProductModel(product))
+        this.totalPages = ProductResponse.total
+        this.productList = ProductResponse.products.map((product) => new ProductModel(product))
     }
     @action.bound
     setProductsListAPIStatus(apiStatus) {

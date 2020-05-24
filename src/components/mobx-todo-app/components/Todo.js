@@ -10,12 +10,9 @@ import './../index'
 
 @observer
 class Todo extends React.Component {
-
-    @action.bound
     onCompleteTodo = () => {
         this.props.todoModel.onCompleteTodo();
     }
-    @action.bound
     onChange = (event) => {
         this.props.todoModel.onChangeInput(event.target.value);
     }

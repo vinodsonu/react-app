@@ -60,7 +60,19 @@ const ItemDataPara = styled.p `${tw`text-gray-500 text-xs`}`
 const ItemDataPrice = styled.p `${tw`text-yellow-600 ml-auto`}`
 const SearchBar = styled.input `${tw`  bg-left bg-no-repeat rounded border-1 py-2 px-3 shadow-md 
  mb-10 md:mb-0 w-42 border-2 border-solid border-gray-200 focus:outline-none`}`
+const PaginationDiv = styled.div `${tw`flex justify-end items-center`}`
+const PrevBtn = styled.button `${tw`flex justify-center bg-black text-white 
+w-8 h-8 mr-2 focus:outline-none `}`
+const PageNumber = styled.p `${`border border-black w-8 h-8 flex justify-center items-center`}`
+const SlashDiv = styled.div `${`mx-2`}`
+const ForwardBtn = styled.button `${tw`flex justify-center bg-black text-white 
+w-8 h-8 mr-2 focus:outline-none `}`
 export {
+    PaginationDiv,
+    PrevBtn,
+    PageNumber,
+    SlashDiv,
+    ForwardBtn,
     CartItemContainer,
     ItemCrossButton,
     ItemImageSize,

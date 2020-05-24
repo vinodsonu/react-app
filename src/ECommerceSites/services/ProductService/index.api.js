@@ -5,12 +5,12 @@ import { apiMethods } from '../../../constants/APIConstants'
 class ProductService {
     api
     constructor() {
-        this.api = create({ baseURL: `https://5ea1a14db9f5ca00166c1f27.mockapi.io/api/` })
+        this.api = create({ baseURL: `https://9ba0cd3ggi.execute-api.ap-south-1.amazonaws.com/` })
     }
-    getProductsAPI() {
+    getProductsAPI(offset) {
         return networkCallWithApisauce(
             this.api,
-            'v1/products/', {},
+            `ecommerce/products?limit=3&offset=${offset}`, {},
             apiMethods.get
         )
     }
